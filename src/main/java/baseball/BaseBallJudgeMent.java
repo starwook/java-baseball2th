@@ -12,7 +12,10 @@ public class BaseBallJudgeMent {
         checkInputSize(baseBallNumber, input);
         checkNumberInRange(input);
         checkInputIsNumber(input);
-        for(int i=0;i<input.length();i++){
+    }
+
+    private void createInputNumber(String input) {
+        for(int i = 0; i< input.length(); i++){
             inputNumbers.add(input.charAt(i)-'0');
         }
     }
