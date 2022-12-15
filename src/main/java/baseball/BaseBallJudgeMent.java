@@ -8,10 +8,19 @@ public class BaseBallJudgeMent {
     public BaseBallJudgeMent(){
 
     }
-    public void checkException(BaseBallNumber baseBallNumber, String input){
-        checkInputSize(baseBallNumber, input);
+
+    public void getResult(BaseBallNumber baseBallNumber,String input){
+        checkException(baseBallNumber.getNumberSize(),input);
+        createInputNumber(input);
+        calculate();
+    }
+    public void checkException(int numberSize, String input){
+        checkInputSize(numberSize, input);
         checkNumberInRange(input);
         checkInputIsNumber(input);
+    }
+    public void calculate(){
+
     }
 
     private void createInputNumber(String input) {
@@ -37,8 +46,8 @@ public class BaseBallJudgeMent {
         }
     }
 
-    private void checkInputSize(BaseBallNumber baseBallNumber, String input) {
-        if(input.length()!=baseBallNumber.getNumberSize()){
+    private void checkInputSize(int numberSize, String input) {
+        if(input.length()!=numberSize){
             throw new IllegalArgumentException(ErrorResource.START+ErrorResource.NOT_SIZE);
         }
     }
