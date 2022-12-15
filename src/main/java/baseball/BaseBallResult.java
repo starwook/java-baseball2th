@@ -1,12 +1,13 @@
 package baseball;
 
 public class BaseBallResult {
-    private static int STANDARD_SUCCESS_NUMBER =3;
+    private int successNumber;
     private int strike;
     private int ball;
-    public BaseBallResult(){
-        strike =0;
-        ball =0;
+    public BaseBallResult(int strike,int ball,int successNumber){
+        this.strike = strike;
+        this.ball = ball;
+        this.successNumber = successNumber;
     }
     public int getBall(){
         return ball;
@@ -15,7 +16,13 @@ public class BaseBallResult {
         return strike;
     }
     public boolean isSuccess(){
-        if(strike ==STANDARD_SUCCESS_NUMBER){
+        if(strike ==successNumber){
+            return true;
+        }
+        return false;
+    }
+    public boolean nothingMatch(){
+        if(strike ==0&& ball ==0){
             return true;
         }
         return false;
