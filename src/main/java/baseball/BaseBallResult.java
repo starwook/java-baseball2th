@@ -14,4 +14,10 @@ public class BaseBallResult {
     public int getStrike(){
         return strike;
     }
+    public boolean isSuccess(){
+        if(strike ==STANDARD_SUCCESS_NUMBER){
+            return true;
+        }
+        return false;
+    }
 }
