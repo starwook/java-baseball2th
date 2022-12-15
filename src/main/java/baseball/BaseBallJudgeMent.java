@@ -11,18 +11,46 @@ public class BaseBallJudgeMent {
 
     public void getResult(BaseBallNumber baseBallNumber,String input){
         checkException(baseBallNumber.getNumberSize(),input);
-
-        calculate();
+        calculateResult(baseBallNumber);
     }
+
+    private BaseBallResult calculateResult(BaseBallNumber baseBallNumber) {
+        int strike =0;
+        int ball =0;
+        calculateStrikeAndBall(baseBallNumber, strike,ball);
+        return getBaseBallResult(baseBallNumber, strike, ball);
+    }
+
+    private BaseBallResult getBaseBallResult(BaseBallNumber baseBallNumber, int strike, int ball) {
+        BaseBallResult baseBallResult = new BaseBallResult(strike, ball, baseBallNumber.getNumberSize());
+        return baseBallResult;
+    }
+
+    private void calculateStrikeAndBall(BaseBallNumber baseBallNumber, int strike, int ball) {
+        for(int i = 0; i< baseBallNumber.getAnswer().size(); i++){
+            if(baseBallNumber.getAnswer().get(i) == inputNumbers.get(i)){
+                strike++;
+                continue;
+            }
+            if(calculateBall(inputNumbers, baseBallNumber.getAnswer())){
+                ball++;
+            };
+        }
+    }
+
     public void checkException(int numberSize, String input){
         checkInputSize(numberSize, input);
         checkNumberInRange(input);
         checkInputIsNumber(input);
         CreateInputNumber(input);
     }
-    public void calculate(){
-
+    public boolean calculateBall(List<Integer> inputNumbers, List<Integer> answer){
+        if(inputNumbers.contains(answer)){
+            return true;
+        }
+        return false;
     }
+
 
     private void CreateInputNumber(String input) {
         for(int i = 0; i< input.length(); i++){
