@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Number {
+public class BaseBallNumber {
     private static int RANGE_START =1;
     private static int RANGE_END = 9;
     private static int numberSize = 3;
     private List<Integer> answer = new ArrayList<>();
-    public Number(){
+    public BaseBallNumber(){
         initiate();
+    }
+    public int getNumberSize(){
+        return numberSize;
     }
     public void initiate(){
         while(answer.size()<numberSize){
@@ -21,5 +24,8 @@ public class Number {
                 answer.add(randomNumber);
             }
         }
+    }
+    public List<Integer> getAnswer(){
+        return answer;
     }
 }
